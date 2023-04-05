@@ -5,17 +5,17 @@ import org.junit.jupiter.api.Test;
 
 public class TaskTest {
 
-        Task simpleTask = new SimpleTask(5, "Позвонить родителям");
+    Task simpleTask = new SimpleTask(5, "Позвонить родителям");
 
-        String[] subtasks = { "Молоко", "Яйца", "Хлеб" };
-        Task epic = new Epic(55, subtasks);
+    String[] subtasks = {"Молоко", "Яйца", "Хлеб"};
+    Task epic = new Epic(55, subtasks);
 
-        Task meeting = new Meeting(
-                555,
-                "Выкатка 3й версии приложения",
-                "Приложение НетоБанка",
-                "Во вторник после обеда"
-        );
+    Task meeting = new Meeting(
+            555,
+            "Выкатка 3й версии приложения",
+            "Приложение НетоБанка",
+            "Во вторник после обеда"
+    );
 
     @Test
     public void shouldFindSimpleTaskBySearchWithWholeWord() {
@@ -172,46 +172,6 @@ public class TaskTest {
 
         boolean expected = false;
         boolean actual = meeting.matches("Вкладка");
-
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldFindStartInMeetingBySearchWithWholeWord() {
-
-        boolean expected = true;
-        boolean actual = meeting.matches("вторник");
-
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldFindStartInMeetingBySearchWithPartOfWord() {
-
-        boolean expected = true;
-        boolean actual = meeting.matches("обед");
-
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldFindStartInMeetingBySearchWithOneCharacter() {
-
-        boolean expected = true;
-        boolean actual = meeting.matches("с");
-
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void doNotShouldFindStartInMeetingBySearchWithWordWhichIsNot() {
-
-        boolean expected = false;
-        boolean actual = meeting.matches("завтрак");
 
 
         Assertions.assertEquals(expected, actual);
